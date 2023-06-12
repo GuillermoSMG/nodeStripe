@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="pay">Pagar</button>
+
+    <script>
+      const pagar = document.querySelector('#pay');
+      pagar.addEventListener('click', async () => {
+        const res = await fetch('/create-checkout-session', {
+          method: 'POST',
+        });
+        const data = await res.json();
+        window.location.href = data.url;
+      });
+    </script>
+  </body>
+</html>
